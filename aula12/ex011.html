@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voto</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, rgb(211, 211, 211), rgb(240, 130, 130));
+        }
+    </style>
+</head>
+<body>
+    <h1>Saiba se você pode votar</h1>
+    Digite sua idade aqui : <input type="number" name="idade" id="idade">
+    <input type="button" value="verificar" onclick="verifica()">
+    <div id="res">
+
+    </div>
+    <script>
+        function verifica () {
+            var idade = document.querySelector('input#idade')
+            var res = document.querySelector('div#res')
+            var valor = Number(idade.value)
+            res.innerHTML = `<p>Você tem ${valor} anos. Para você o voto é:</p>`
+            if (valor < 16) {
+                res.innerHTML += `<p><strong>NEGADO!</strong></p>`
+            } else if (valor < 18 || valor >= 65) {
+                res.innerHTML += `<p><strong>OPCIONAL!</strong></p>`
+            } else {
+                res.innerHTML += `<p><strong>OBRIGATÓRIO!</strong></p>`
+            }
+        }
+    </script>
+</body>
+</html>
